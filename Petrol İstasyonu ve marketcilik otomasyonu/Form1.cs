@@ -43,6 +43,7 @@ namespace Petrol_İstasyonu_ve_marketcilik_otomasyonu
         }
         private void Form1_Load(object sender, EventArgs e)
         {
+            
             progressBar1.Maximum = 1000;
             progressBar2.Maximum = 1000;
             progressBar3.Maximum = 1000;
