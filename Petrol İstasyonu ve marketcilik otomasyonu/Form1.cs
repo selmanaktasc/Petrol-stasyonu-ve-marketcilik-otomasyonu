@@ -19,7 +19,9 @@ namespace Petrol_İstasyonu_ve_marketcilik_otomasyonu
 
         double M_Benzin = 0, M_Dizel = 0, M_LPG = 0;
         double E_Benzin = 0, E_Dizel = 0, E_LPG = 0;
+        double F_Benzin=0,   F_Dizel=0,   F_LPG = 0;
         string[] depo_bilgileri;
+        string[] fiyat_bilgileri;
 
         private void button1_Click(object sender, EventArgs e)
         {
@@ -65,9 +67,11 @@ namespace Petrol_İstasyonu_ve_marketcilik_otomasyonu
             progressBar_guncelle();
         }
 
+       
+
         private void txt_depo_oku()
         {
-            depo_bilgileri = System.IO.File.ReadAllLines(Application.StartupPath + "\\Depo.txt");
+            depo_bilgileri = System.IO.File.ReadAllLines(Application.StartupPath + "\\depo.txt");
             M_Benzin = Convert.ToDouble(depo_bilgileri[0]);
             M_Dizel = Convert.ToDouble(depo_bilgileri[1]);
             M_LPG = Convert.ToDouble(depo_bilgileri[2]);
@@ -75,9 +79,22 @@ namespace Petrol_İstasyonu_ve_marketcilik_otomasyonu
         }
         private void txt_depo_yaz()
         {
-            label1.Text=M_Benzin.ToString("N");
+            label1.Text=M_Benzin.ToString("N"); //virgülden sonra basamak sayısını 2ye ayarlar
             label2.Text=M_Dizel.ToString("N");
             label3.Text=M_LPG.ToString("N");
+        }
+        private void txt_fiyat_oku()
+        {
+            fiyat_bilgileri = System.IO.File.ReadAllLines(Application.StartupPath + "\\fiyat.Txt");
+            F_Benzin = Convert.ToDouble(fiyat_bilgileri[0]);
+            F_Dizel = Convert.ToDouble(fiyat_bilgileri[1]);
+            F_LPG = Convert.ToDouble(fiyat_bilgileri[2]);
+        }
+        private void txt_fiyat_yaz()
+        {
+            label13.Text=F_Benzin.ToString("N");
+            label15.Text = F_Dizel.ToString("N");
+            label14.Text=F_LPG.ToString("N");
         }
         private void progressBar_guncelle()
         {
@@ -93,6 +110,8 @@ namespace Petrol_İstasyonu_ve_marketcilik_otomasyonu
             progressBar3.Maximum = 1000;
             txt_depo_oku();
             txt_depo_yaz();
+            txt_fiyat_oku();
+            txt_fiyat_yaz();
             progressBar_guncelle();
         }
     }
